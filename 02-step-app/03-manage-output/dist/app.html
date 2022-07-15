@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webpack5学习</title>
+</head>
+<body>
+    <!-- 未使用webpack之前的传统引用js方法 -->
+    <!-- 如果引用顺序错误,比如index.js 先引入,后引用hello-world.js 报错:Uncaught ReferenceError: hellWorld is not defined,  -->
+    <!-- 如果有多个js文件,则很容易就出现因为引用顺序问题而导致的错误 -->
+    <!-- <script src="./src/hello-world.js"></script>
+    <script src="./src/index.js"></script> -->
+
+    <!--使用webpack之后的js引用方法 ,此时js能正常运行了,webpack的打包方式已经生效 -->
+    <!-- <script src="./dist/bundle.js"></script> -->
+
+
+<script defer src="bundle.js"></script></body>
+</html>

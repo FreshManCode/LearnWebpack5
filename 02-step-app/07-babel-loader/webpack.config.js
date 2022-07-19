@@ -127,6 +127,22 @@ module.exports = {
                     parse:json5.parse,
                 }
             },
+            // 使用babel-loader,完成js ES6代码模块在低版本浏览器上的兼容转换
+            {
+                test:/\.js$/,
+                // node_modules模块下的js代码不需要进行ES6相关转换,只需要转换本地的js代码
+                exclude:/node_modules/,
+                use:{
+                    loader:'babel-loader',
+                    options:{
+                        presets:['@babel/preset-env'],
+                        plugins:[
+                            '@babel/plugin-transform-runtime'
+                        ],
+
+                    }
+                }
+            }
         ]
     },
     // 优化方面的配置

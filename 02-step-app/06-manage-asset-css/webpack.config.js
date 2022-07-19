@@ -6,6 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // 压缩css插件
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
+const toml = require('toml')
+const yaml = require('yaml')
+const json5 = require('json5')
+
 module.exports = {
     // 设置入口
     entry : './src/index.js',
@@ -19,8 +23,8 @@ module.exports = {
         // 配置资源打包文件路径以及文件名方法1 配置资源打包在dist中的路径,以及资源文件名  contenthash webpack会自动生成hash名 ext 扩展名为webpack自动填充的
         assetModuleFilename:'images/[contenthash][ext]',
     },
-    // webpack编译模式为development
-    mode:'production',
+    // webpack编译模式为development/production
+    mode:'development',
     // 使用source-map, 方便排错,在出现错误时,浏览器控制台上能看到未被hash处理的js文件
     devtool:'inline-source-map',
 
@@ -82,7 +86,47 @@ module.exports = {
                 // style-loader 把样式加载到当前head中的style标签里面,如果想要抽离css文件,如下方式使用
                 // use:['style-loader','css-loader','less-loader']
                 use:[MiniCssExtractPlugin.loader,'css-loader','less-loader']
-            }
+            },
+            {
+                // (加入字体)引入自定义字体的配置
+                test:/\.(woff|woff2|eot|ttf|otf)$/,
+                type:'asset/resource',
+            },
+            // 引用解析本地.csv文件
+            {
+
+                test:/\.(csv|tsc)$/,
+                use:'csv-loader',
+            },
+            // 引用解析本地.xml文件
+            {
+                test:/\.xml$/,
+                use:'xml-loader',
+            },
+            // 解析toml类型数据
+            {
+                test:/\.toml$/,
+                type:'json',
+                parser:{
+                    parse:toml.parse,
+                }
+            },
+            // 解析yaml类型数据
+            {
+                test:/\.yaml$/,
+                type:'json',
+                parser:{
+                    parse:yaml.parse,
+                }
+            },
+            // 解析json5类型数据
+            {
+                test:/\.json5$/,
+                type:'json',
+                parser:{
+                    parse:json5.parse,
+                }
+            },
         ]
     },
     // 优化方面的配置

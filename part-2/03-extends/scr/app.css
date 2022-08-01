@@ -1,0 +1,11 @@
+body {
+    background-color: red;
+    display: flex;
+
+    /* 使用了postcss-nested 可以支持嵌套css语法  */
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+    }
+}

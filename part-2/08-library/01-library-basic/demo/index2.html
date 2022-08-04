@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>index2.html</h3>
+    <!-- 引入自己设置的库为 module时 -->
+    <script type="module">
+        import {add} from '../dist/myLib.js'
+        console.log('module_import:',add);
+    </script>
+</body>
+</html>

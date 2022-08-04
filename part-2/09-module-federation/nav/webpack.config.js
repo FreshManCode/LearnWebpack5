@@ -11,7 +11,7 @@ module.exports = {
             name:'nav',
             filename:'remoteEntry.js',
             remotes:{},
-            // 要保留处组件,给别的用
+            // 要保留处组件,给别的用,此处的key 是在别的项目引用时导入的key
             exposes:{
                 './Header':'./src/Header.js',
             },

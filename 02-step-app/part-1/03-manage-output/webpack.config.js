@@ -8,7 +8,7 @@ module.exports = {
     // 设置出口
     output:{
         filename:'bundle.js',
-        // path设置的时候一定是绝对路径,否则会报错, ** path is nor an absolute path!
+        // path设置的时候一定是绝对路径,否则会报错, ** path is not an absolute path!
         // path.resolve(__dirname,'./dist') 在webpack.config.js 当前文件目录下,拼接一个dist文件夹
         path:path.resolve(__dirname,'./dist')
     },

@@ -14,8 +14,9 @@ module.exports = {
                 // 设置引入nav 这个模块的远程地址,此时在根据要引入的这个模块的webpack中的配置的key
                 nav:'nav@http://localhost:3003/remoteEntry.js'
             },
+            // 对外暴露
             exposes:{
-
+                './HomeList':"./src/HomeList.js"
             },
             shared:{},
         }),
